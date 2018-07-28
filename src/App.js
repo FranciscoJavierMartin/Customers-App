@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Link, BrowserRouter as Router, Route} from 'react-router-dom';
+import {Link, BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import HomeContainer from './containers/HomeContainer';
+import CustomersContainer from './containers/CustomersContainer';
 
 class App extends Component {
-
-  renderHome=()=>(<h1>Home</h1>);
 
   renderCustomerContainer=()=>(<h1>Customer container</h1>);
 
@@ -15,10 +15,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={this.renderHome}/>
-          <Route exact path="/customers" component={this.renderCustomerContainer}/>
-          <Route exact path="/customers/:dni" component={this.renderCustomerListContainer}/>
-          <Route exact path="/customers/new" component={this.renderCustomerNewContainer}/>
+          <Route exact path="/" component={HomeContainer}/>
+          <Route exact path="/customers" component={CustomersContainer}/>
+          <Switch>
+            <Route path="/customers/new" component={this.renderCustomerNewContainer}/>
+            <Route path="/customers/:dni" component={this.renderCustomerListContainer}/>
+          </Switch>
         </div>
       </Router>
     );

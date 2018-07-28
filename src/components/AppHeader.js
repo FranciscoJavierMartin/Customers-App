@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AppHeader = () => {
+const AppHeader = (props) => {
     return (
         <div>
             <div className="app-header">
