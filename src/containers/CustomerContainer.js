@@ -9,6 +9,10 @@ import CustomerData from '../components/CustomerData';
 
 class CustomerContainer extends Component {
 
+    handleSubmit=values=>{
+        
+    }
+
     renderBody=()=>(
         <Route path="/customers/:dni/edit" children={
             ({match})=>{
