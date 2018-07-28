@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import AppFrame from '../components/AppFrame';
 import { getCustomerByDni } from '../selectors/customers';
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import CustomerEdit from '../components/CustomerEdit';
 import CustomerData from '../components/CustomerData';
 
 class CustomerContainer extends Component {
 
-    renderBody = () => (
+    renderBody=()=>(
         <Route path="/customers/:dni/edit" children={
-            ({ match }) => {
-                const CustomerControl = match ? CustomerEdit : CustomerData;
-                return <CustomerControl {...this.props.customer} />
+            ({match})=>{
+                const CustomerControl = match ?CustomerEdit:CustomerData;
+                return <CustomerControl {...this.props.customer}/>
             }
-        } />
+        }/>
     )
 
     render() {
@@ -33,12 +33,12 @@ class CustomerContainer extends Component {
 }
 
 CustomerContainer.propTypes = {
-    dni: PropTypes.string.isRequired,
-    customer: PropTypes.object.isRequired,
+    dni:PropTypes.string.isRequired,
+    customer:PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state, props) => ({
-    customer: getCustomerByDni(state, props)
+const mapStateToProps=(state,props)=>({
+    customer:getCustomerByDni(state,props)
 });
 
-export default connect(mapStateToProps, null)(CustomerContainer);
+export default connect(mapStateToProps,null)(CustomerContainer);
